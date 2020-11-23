@@ -1,0 +1,53 @@
+:root {
+   --fullGrid: 1 / 1 / -1 / -1;
+   --video-header__video__z-index: 1;
+   --masthead-arrow__z-index:2;
+}
+
+/* Head Banner */
+
+header {
+  /* Create grid spanning viewport width & height */
+  display: grid;
+  grid-template-rows: 100vh;
+  overflow: hidden;
+}
+
+.video-header {
+  grid-template-rows: 100vh;
+  background-color: transparent;
+  /*background-color: rgba(216, 72, 72, 0.377);*/
+}
+.video-header,
+.video-header video,
+.viewport-header {
+  /* Create grid spanning viewport width & height */
+  display: grid;
+  grid-area: var(--fullGrid);
+}
+.video-header video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: var(--video-header__video__z-index);
+}
+
+.viewport-header svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.masthead-arrow {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: rotate(45deg);
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  z-index: var(--masthead-arrow__z-index);
+}

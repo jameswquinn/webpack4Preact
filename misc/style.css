@@ -1,0 +1,44 @@
+.icon {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+/*
+.icon-Cardio {
+  width: 1.0009765625em;
+}
+
+.icon-core {
+  width: 0.9970703125em;
+}
+
+.icon-Endurance {
+  width: 1.0009765625em;
+}
+
+.icon-Strength {
+  width: 1.0029296875em;
+}
+
+.icon-Toning {
+  width: 0.9970703125em;
+}
+.icon-Nutrition {
+  width: 1.0029296875em;
+}
+*/
+
+#icon-Cardio, #icon-core, #icon-Endurance, #icon-Strength, #icon-Toning, #icon-Nutrition   {
+  fill: red;
+}

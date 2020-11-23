@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>My App</title>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=5' />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon_16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon_32x32.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#000">
+  <meta name="application-name" content="twister">
+  <link rel="apple-touch-icon" sizes="57x57" href="icon_57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="icon_60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="icon_72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="icon_76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="icon_114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="icon_120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="icon_144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icon_152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icon_167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon_180x180.png">
+  <link rel="apple-touch-icon" sizes="1024x1024" href="icon_1024x1024.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="twister">
+  <meta name="msapplication-TileColor" content="#000">
+  <meta name="msapplication-TileImage" content="icon_144x144.png">
+
+  <script>
+    // Load and register pre-caching Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js', {
+          scope: '/',
+        });
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <noscript>
+    Please enable JavaScript to view this website.
+  </noscript>
+</body>
+
+</html>

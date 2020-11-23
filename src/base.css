@@ -1,0 +1,22 @@
+
+/* Image */
+
+img[data-sizes="auto"] {
+  display: block;
+  width: 100%;
+}
+
+.lazy {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.lazy.is-loaded {
+  opacity: 1;
+}
+
+/* Utility */
+
+main{
+    margin: 0% 0% var(--navigation-height) 0%;
+}

@@ -1,0 +1,30 @@
+
+    :root {
+        /* Full grid area variable */
+        --fullGrid: 1 / 1 / -1 / -1;
+    }
+    header {
+        /* Create grid spanning viewport width & height */
+        display: grid;
+        grid-template-rows: 100vh;
+        overflow: hidden;
+    }
+    .video-bg {
+        /* Span the full grid */
+        grid-area: var(--fullGrid);
+        min-width: 100%;
+        min-height: 100%;
+        /* Display video below overlay */
+        z-index: -1;
+    }
+    .video-bg video, .video-bg img {
+        /* Re-size video to cover full screen while maintaining aspect ratio */
+        -o-object-fit: cover;
+        object-fit: cover;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    .video-bg::-webkit-media-controls {
+        display: none;
+    }
+

@@ -1,1 +1,2 @@
-# webpack4Preact
+# personalTrainer
+early build for personal trainer portfolio site
