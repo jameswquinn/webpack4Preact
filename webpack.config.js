@@ -1,7 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
-const WebpackBuildNotifierPlugin = require("webpack-build-notifier");
 const glob = require("glob");
+const PATHS = {
+  src: path.join(__dirname, "src"),
+};
+
+const WebpackBuildNotifierPlugin = require("webpack-build-notifier");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -26,90 +30,15 @@ module.exports = {
     filename: "[name]~[contentHash].js",
     chunkFilename: "[name]~[contentHash].[id].js",
   },
-  module: {
-    rules: [
-      {
-        test: /\.s?[ac]ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: "sass-loader",
-
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.jsx?$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [
-                [
-                  "@babel/preset-env",
-                  {
-                    modules: false,
-                    targets: [
-                      "last 1 version",
-                      "> 1%",
-                      "maintained node versions",
-                      "not dead",
-                    ],
-                  },
-                ],
-              ],
-              plugins: [
-                [
-                  "transform-react-jsx",
-                  {
-                    pragma: "h",
-                  },
-                ],
-              ],
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpe?g|png)$/i,
-        loader: "responsive-loader",
-        options: {
-          adapter: require("responsive-loader/sharp"),
-          format: "jpg",
-          quality: 70,
-          name: "[name]~[contentHash].[ext]",
-          outputPath: "imgs",
-        },
-      },
-      {
-        test: /\.mp4$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "[name].[ext]",
-            outputPath: "videos",
-          },
-        },
-      },
-    ],
-  },
   plugins: [
     new CleanWebpackPlugin({
       verbose: true,
       dry: false,
     }),
+    new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "!!prerender-loader?string!public/index.html",
+      title: "Webpack4Preact Starter Kit v1.0.1",
       meta: {
         description: "Description website",
         author: "A N Other",
@@ -159,7 +88,7 @@ module.exports = {
       filename: "[name]~[chunkhash].css",
     }),
     new PurgecssPlugin({
-      paths: glob.sync(path.join(__dirname, "src/**/*"), { nodir: true }),
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
     new Critters({
       // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
@@ -196,6 +125,83 @@ module.exports = {
       analyzerMode: "static",
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    modules: false,
+                    targets: [
+                      "last 1 version",
+                      "> 1%",
+                      "maintained node versions",
+                      "not dead",
+                    ],
+                  },
+                ],
+              ],
+              plugins: [
+                [
+                  "transform-react-jsx",
+                  {
+                    pragma: "h",
+                  },
+                ],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|webp)$/i,
+        loader: "responsive-loader",
+        options: {
+          adapter: require("responsive-loader/sharp"),
+          format: "jpg",
+          quality: 70,
+          name: "[name]~[contentHash].[ext]",
+          outputPath: "imgs",
+        },
+      },
+      {
+        test: /\.mp4$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "videos",
+          },
+        },
+      },
+    ],
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {
