@@ -1,9 +1,10 @@
 /** @jsx h */
-import { h, Component, render } from "preact";
+import { h, Component, render, Fragment } from "preact";
 import Helmet from "preact-helmet";
 import { Router } from "preact-router";
 import { Link } from 'preact-router/match';
 import AsyncRoute from 'preact-async-route';
+
 
 
 import "./styles.css";
@@ -14,7 +15,7 @@ const NODE = document.body.querySelector("#root");
 
 
 const Home = () => (
-  <div>
+  <Fragment>
     <Helmet
       title="My Title Hay James Yet Another Page"
       meta={[
@@ -23,7 +24,7 @@ const Home = () => (
       ]}
     />
     <h1>Hello world</h1>
-  </div>
+  </Fragment>
 );
 
 
