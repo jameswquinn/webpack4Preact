@@ -25,6 +25,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  entry: `${PATHS.src}/index`,
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name]~[contentHash].js",
@@ -38,14 +39,6 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "!!prerender-loader?string!public/index.html",
-      title: "Webpack4Preact Starter Kit v1.0.1",
-      meta: {
-        description: "Description website",
-        author: "A N Other",
-        keywords: "website, with, meta, tags",
-        robots: "index, follow",
-        "revisit-after": "5 month",
-      },
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -60,7 +53,7 @@ module.exports = {
       background_color: "#000000",
       theme_color: "#000000",
       orientation: "portrait",
-      display: "fullscreen",
+      display: "standalone",
       start_url: ".",
       crossorigin: null,
       inject: false,
@@ -71,7 +64,7 @@ module.exports = {
       icons: [
         {
           src: path.resolve("public/icons/icon.png"),
-          sizes: [16, 32, 57, 60, 72, 76, 114, 120, 144, 152, 167, 180], // multiple sizes
+          sizes: [16, 32, 180], // multiple sizes
         },
         {
           src: path.resolve("public/icons/icon.png"),
