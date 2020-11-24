@@ -3,29 +3,29 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
-    devServer: {
+  devServer: {
     compress: false,
-    port: 9000
+    port: 9000,
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
       {
-        test: /\.s?[ac]ss$/,
+        test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader"
+            loader: "css-loader",
           },
           {
-            loader: "sass-loader"
-          }
-        ]
+            loader: "sass-loader",
+          },
+        ],
       },
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         use: [
           {
             loader: "babel-loader",
@@ -39,38 +39,29 @@ module.exports = {
                       "last 1 version",
                       "> 1%",
                       "maintained node versions",
-                      "not dead"
-                    ]
-                  }
-                ]
+                      "not dead",
+                    ],
+                  },
+                ],
               ],
               plugins: [
                 [
                   "transform-react-jsx",
                   {
-                    pragma: "h"
-                  }
-                ]
-              ]
-            }
-          }
-        ]
+                    pragma: "h",
+                  },
+                ],
+              ],
+            },
+          },
+        ],
       },
       {
-        test: /\.(jpe?g|png)$/i,
+        test: /\.(jpe?g|png|webp)$/i,
         loader: "responsive-loader",
         options: {
-          disable: true
-        }
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          { loader: "file-loader" },
-          {
-            loader: "svgo-loader"
-          }
-        ]
+          disable: true,
+        },
       },
       {
         test: /\.mp4$/,
@@ -78,11 +69,11 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: "videos"
-          }
-        }
-      }
-    ]
+            outputPath: "videos",
+          },
+        },
+      },
+    ],
   },
-  plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()]
+  plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
 };
