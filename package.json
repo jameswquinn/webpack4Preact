@@ -1,15 +1,13 @@
 {
-  "name": "ts-preact-starter",
+  "name": "webpack4Preact",
   "version": "1.0.0",
-  "description": "Barebones starter project for Preact with TypeScript",
-  "main": "index.js",
-  "author": "James Quinn",
+  "description": "Webpack Starter kit for PWA Preact projects",
+  "": "James Quinn",
   "license": "MIT",
   "keywords": [
     "preact",
-    "react",
-    "typescript",
-    "boilerplate"
+    "PWA",
+    "webpack"
   ],
   "engines": {
     "node": ">=6"
